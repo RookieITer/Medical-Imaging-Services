@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PortFolio_A1_Version2._0.Models.ViewModel.DoctorRatingViewModel>
+
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Average Ratings for Doctors</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Average Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DoctorName</td>
+                <td>@item.Score</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Home")">Return to Main Page</a>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

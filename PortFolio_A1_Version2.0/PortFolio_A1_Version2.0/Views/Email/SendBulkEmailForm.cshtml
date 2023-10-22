@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PortFolio_A1_Version2._0.Models.DoctorDetails>
+
+@{
+    ViewBag.Title = "SendBulkEmailForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Send Bulk Emails</h2>
+
+<form action="@Url.Action("SendBulkEmailForm", "Email")" method="post">
+    <h3>Select Doctors:</h3>
+    <div id="pagedDoctorsList">
+        @{
+            int pageCount = 0;
+        }
+        @foreach (var doctor in Model)
+        {
+            if (pageCount % 5 == 0)
+            {
+                @:<div class="page" @(pageCount == 0 ? "style=display:block;" : "style=display:none;")>
+                }
+
+                <input type="checkbox" name="selectedDoctors" value="@doctor.Email" /> @doctor.DoctorName <br />
+
+                if ((pageCount % 5 == 4) || (pageCount == Model.Count() - 1))
+                {
+                @:</div>
+            }
+
+            pageCount++;
+        }
+
+        
+    </div>
+
+    <button id="prevPage" type="button">Previous</button>
+    <button id="nextPage" type="button">Next</button>
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" required />
+
+    <label for="contents">Contents:</label>
+    <textarea name="contents" required></textarea>
+
+    <br />
+    <input type="submit" value="Send Emails" />
+</form>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        var currentPage = 0;
+        var totalPages = $('.page').length;
+
+        $('#prevPage').click(function () {
+            if (currentPage > 0) {
+                $('.page').hide();
+                currentPage--;
+                $('.page').eq(currentPage).show();
+            }
+        });
+
+        $('#nextPage').click(function () {
+            if (currentPage < totalPages - 1) {
+                $('.page').hide();
+                currentPage++;
+                $('.page').eq(currentPage).show();
+            }
+        });
+    </script>
+}

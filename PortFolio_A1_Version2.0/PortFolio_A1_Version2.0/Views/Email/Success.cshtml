@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Email Sent Successfully!</h2>
+
+<p>
+    Your email has been sent successfully!
+    <a href="@Url.Action("Index", "Home")">Click here</a> to return to the home page.
+</p>
+
+<p>
+    Want to send more emails?
+    <a href="@Url.Action("SendBulkEmailForm", "Email")">Click here</a> to go to the Send Bulk Email page.
+</p>

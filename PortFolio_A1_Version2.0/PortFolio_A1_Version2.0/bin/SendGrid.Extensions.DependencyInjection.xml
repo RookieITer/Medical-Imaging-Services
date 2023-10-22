@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SendGrid.Extensions.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:SendGrid.Extensions.DependencyInjection.InjectableSendGridClient">
+            <summary>
+            A wrapped SendGridClient with single constructor to inject an <see cref="T:System.Net.Http.HttpClient"/> whose lifetime is managed externally, e.g. by an DI container.
+            </summary>
+        </member>
+        <member name="T:SendGrid.Extensions.DependencyInjection.ServiceCollectionExtensions">
+            <summary>
+            extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:SendGrid.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSendGrid(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{System.IServiceProvider,SendGrid.SendGridClientOptions})">
+            <summary>
+            Adds the <see cref="T:System.Net.Http.IHttpClientFactory"/> with <see cref="T:SendGrid.ISendGridClient"/> and related services to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configureOptions">A delegate that is used to configure a <see cref="T:SendGrid.SendGridClientOptions"/>.</param>
+            <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder" /> that can be used to configure the client.</returns>
+        </member>
+        <member name="M:SendGrid.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSendGrid(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{SendGrid.SendGridClientOptions})">
+            <summary>
+            Adds the <see cref="T:System.Net.Http.IHttpClientFactory"/> with <see cref="T:SendGrid.ISendGridClient"/> and related services to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+            <param name="configureOptions">A delegate that is used to configure a <see cref="T:SendGrid.SendGridClientOptions"/>.</param>
+            <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder" /> that can be used to configure the client.</returns>
+        </member>
+    </members>
+</doc>

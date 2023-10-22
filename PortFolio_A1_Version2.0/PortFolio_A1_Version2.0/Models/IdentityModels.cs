@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -33,6 +34,13 @@ namespace PortFolio_A1_Version2._0.Models
         }
 
         public System.Data.Entity.DbSet<PortFolio_A1_Version2._0.Models.DoctorDetails> DoctorDetails { get; set; }
+
+        public System.Data.Entity.DbSet<PortFolio_A1_Version2._0.Models.DoctorRating> DoctorRatings { get; set; }
+
+        public System.Data.Entity.DbSet<PortFolio_A1_Version2._0.Models.Doctor> Doctors { get; set; }
+
+        
+
     }
 
 

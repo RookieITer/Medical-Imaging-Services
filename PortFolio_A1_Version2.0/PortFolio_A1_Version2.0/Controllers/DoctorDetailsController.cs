@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using PagedList;
 using PortFolio_A1_Version2._0.Models;
 
@@ -18,7 +19,7 @@ namespace PortFolio_A1_Version2._0.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: DoctorDetails
-        [Authorize(Roles = "Doctor")]
+        [Authorize(Roles = "Doctor, Patient")]
         public ActionResult Index(string sortOrder, string searchString, int? page)
         {
             ViewBag.CurrentFilter = searchString;
@@ -55,7 +56,7 @@ namespace PortFolio_A1_Version2._0.Controllers
 
 
         // GET: DoctorDetails/Details/5
-        [Authorize(Roles = "Doctor")]
+        [Authorize(Roles = "Doctor, Patient")]
         public ActionResult Details(int? id)
         {
             if (id == null)

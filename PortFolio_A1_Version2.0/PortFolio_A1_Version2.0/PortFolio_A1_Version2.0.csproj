@@ -343,10 +343,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CSPReportController.cs" />
     <Compile Include="Controllers\DoctorDetailsController.cs" />
+    <Compile Include="Controllers\DoctorRatingController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="EmailTools\EmailService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -402,12 +403,52 @@
     <Compile Include="Migrations\202310191052210_UpdateValidationForItems.designer.cs">
       <DependentUpon>202310191052210_UpdateValidationForItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310210423351_SendEmail.cs" />
+    <Compile Include="Migrations\202310210423351_SendEmail.designer.cs">
+      <DependentUpon>202310210423351_SendEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310220804076_AddDoctorRating.cs" />
+    <Compile Include="Migrations\202310220804076_AddDoctorRating.designer.cs">
+      <DependentUpon>202310220804076_AddDoctorRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221117177_AddDoctorRating1.cs" />
+    <Compile Include="Migrations\202310221117177_AddDoctorRating1.designer.cs">
+      <DependentUpon>202310221117177_AddDoctorRating1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221248096_AddDoctorRating2.cs" />
+    <Compile Include="Migrations\202310221248096_AddDoctorRating2.designer.cs">
+      <DependentUpon>202310221248096_AddDoctorRating2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221248554_DoctorInstance.cs" />
+    <Compile Include="Migrations\202310221248554_DoctorInstance.designer.cs">
+      <DependentUpon>202310221248554_DoctorInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221322353_DoctorInstance1.cs" />
+    <Compile Include="Migrations\202310221322353_DoctorInstance1.designer.cs">
+      <DependentUpon>202310221322353_DoctorInstance1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221409429_UpdateIdentityModels.cs" />
+    <Compile Include="Migrations\202310221409429_UpdateIdentityModels.designer.cs">
+      <DependentUpon>202310221409429_UpdateIdentityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221459353_AddDoctorRating3.cs" />
+    <Compile Include="Migrations\202310221459353_AddDoctorRating3.designer.cs">
+      <DependentUpon>202310221459353_AddDoctorRating3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310221624572_AssignPatientRoleToAllUsers.cs" />
+    <Compile Include="Migrations\202310221624572_AssignPatientRoleToAllUsers.designer.cs">
+      <DependentUpon>202310221624572_AssignPatientRoleToAllUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Doctor.cs" />
     <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\DoctorRating.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SendEmail.cs" />
+    <Compile Include="Models\ViewModel\DoctorRatingViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -861,6 +902,8 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -998,6 +1041,11 @@
     <Content Include="Views\DoctorDetails\Details.cshtml" />
     <Content Include="Views\DoctorDetails\Edit.cshtml" />
     <Content Include="Views\DoctorDetails\Index.cshtml" />
+    <Content Include="Views\Email\SendEmailForm.cshtml" />
+    <Content Include="Views\Email\Success.cshtml" />
+    <Content Include="Views\Email\SendBulkEmailForm.cshtml" />
+    <Content Include="Views\DoctorRating\Index.cshtml" />
+    <Content Include="Views\DoctorRating\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1045,6 +1093,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310191052210_UpdateValidationForItems.resx">
       <DependentUpon>202310191052210_UpdateValidationForItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310210423351_SendEmail.resx">
+      <DependentUpon>202310210423351_SendEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310220804076_AddDoctorRating.resx">
+      <DependentUpon>202310220804076_AddDoctorRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221117177_AddDoctorRating1.resx">
+      <DependentUpon>202310221117177_AddDoctorRating1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221248096_AddDoctorRating2.resx">
+      <DependentUpon>202310221248096_AddDoctorRating2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221248554_DoctorInstance.resx">
+      <DependentUpon>202310221248554_DoctorInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221322353_DoctorInstance1.resx">
+      <DependentUpon>202310221322353_DoctorInstance1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221409429_UpdateIdentityModels.resx">
+      <DependentUpon>202310221409429_UpdateIdentityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221459353_AddDoctorRating3.resx">
+      <DependentUpon>202310221459353_AddDoctorRating3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310221624572_AssignPatientRoleToAllUsers.resx">
+      <DependentUpon>202310221624572_AssignPatientRoleToAllUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

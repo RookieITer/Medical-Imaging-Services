@@ -1,0 +1,34 @@
+﻿@model PortFolio_A1_Version2._0.Models.ViewModel.DoctorRatingViewModel
+
+@{
+    ViewBag.Title = "Submit Doctor Rating";
+}
+
+<h2>Submit Doctor Rating</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+
+@using (Html.BeginForm("SubmitRating", "DoctorRating", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="DoctorId">Doctor:</label>
+        @Html.DropDownListFor(model => model.DoctorId, Model.Doctors, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="Score">Score:</label>
+        @Html.TextBoxFor(model => model.Score, new { @class = "form-control", type = "number", min = "1", max = "5" })
+        <span class="help-block">Rate from 1 to 5</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Rating</button>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
