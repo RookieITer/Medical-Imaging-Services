@@ -217,3 +217,7 @@ C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\
 C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.UpdateIdentityModels.resources
 C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AddDoctorRating3.resources
 C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AssignPatientRoleToAllUsers.resources
+C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AddBookingModel.resources
+C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AddBookingModel1.resources
+C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AddBookingModel2.resources
+C:\Users\Jiahui Du\Desktop\5032\PortFolio_A1_Version2.0\PortFolio_A1_Version2.0\obj\Debug\PortFolio_A1_Version2._0.Migrations.AddBookingModel3.resources

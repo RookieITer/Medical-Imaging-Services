@@ -39,7 +39,8 @@ namespace PortFolio_A1_Version2._0.Models
 
         public System.Data.Entity.DbSet<PortFolio_A1_Version2._0.Models.Doctor> Doctors { get; set; }
 
-        
+        public System.Data.Entity.DbSet<PortFolio_A1_Version2._0.Models.Booking> Bookings { get; set; }
+
 
     }
 

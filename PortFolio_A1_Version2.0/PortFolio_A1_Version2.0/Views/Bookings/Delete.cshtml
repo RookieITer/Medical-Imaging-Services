@@ -1,0 +1,27 @@
+﻿@model PortFolio_A1_Version2._0.Models.Booking
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<p>
+    Booking Id: @Model.BookingId<br>
+    Start Time: @Model.StartTime<br>
+    End Time: @Model.EndTime<br>
+    <!-- Add others -->
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.BookingId) <!-- For saving ID -->
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    @Html.ActionLink("Back to list", "Index", null, new { @class = "btn btn-secondary" })
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -27,6 +27,8 @@
 
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
+    @RenderSection("Styles", required: false)
+
 
 </head>
 <body>
@@ -82,7 +84,7 @@
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <a href="@Url.Action("Create", "Items")" class="appointment-btn">
+            <a href="@Url.Action("Index", "Bookings")" class="appointment-btn">
                 <span class="d-none d-md-inline">Make an</span> Appointment
             </a>
 

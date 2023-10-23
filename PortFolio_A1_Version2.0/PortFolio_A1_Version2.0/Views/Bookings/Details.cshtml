@@ -1,0 +1,23 @@
+﻿@model PortFolio_A1_Version2._0.Models.Booking
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<p>
+    Booking Id: @Model.BookingId<br>
+    Start Time: @Model.StartTime<br>
+    End Time: @Model.EndTime<br>
+    <!-- Add others -->
+</p>
+
+<p>
+    @Html.ActionLink("Back to the list", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

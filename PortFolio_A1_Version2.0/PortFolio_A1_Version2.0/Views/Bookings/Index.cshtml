@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PortFolio_A1_Version2._0.Models.Booking>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking Table</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().EndTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => booking.BookingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => booking.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => booking.EndTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = booking.BookingId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = booking.BookingId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = booking.BookingId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<p>
+    @Html.ActionLink("Create new booking", "Create")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -22,10 +22,21 @@ namespace PortFolio_A1_Version2._0
 
             InitializeRoles();
         }
-        protected void Application_BeginRequest()
+        /*protected void Application_BeginRequest()
         {
-            Response.Headers.Add("Content-Security-Policy-Report-Only", "default-src 'self'; report-uri /csp-violation-report-endpoint");
-        }
+            // Allow scripts, styles, images, etc. to be loaded from self (same origin)
+            // Additionally, allow styles to be loaded from 'cdnjs.cloudflare.com'
+            // Make sure to adjust these settings as per your specific needs.
+            Response.Headers.Add("Content-Security-Policy-Report-Only",
+                                 "default-src 'self'; " +
+                                 "script-src 'self' 'unsafe-inline'; " + // Allow inline scripts. Note: 'unsafe-inline' can have security implications.
+                                 "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; " + // Allow styles from 'cdnjs.cloudflare.com' and inline styles
+                                 "img-src 'self'; " + // If you have images from other sources, add them here
+                                 "font-src 'self'; " + // If you have fonts from other sources, add them here
+                                 "connect-src 'self'; " + // If you make AJAX requests to other sources, add them here
+                                 "report-uri /csp-violation-report-endpoint");
+        }*/
+
 
         private void InitializeRoles()
         {
