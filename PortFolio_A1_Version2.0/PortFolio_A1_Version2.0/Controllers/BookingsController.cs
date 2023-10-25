@@ -180,18 +180,57 @@ namespace PortFolio_A1_Version2._0.Controllers
         [HttpPost]
         public ActionResult CreateBooking(DateTime startTime, DateTime endTime)
         {
+            // 输入验证
+            if (startTime >= endTime)
+            {
+                return Json(new { success = false, message = "Start time must be earlier than end time." });
+            }
+
+            if (startTime < DateTime.Now)
+            {
+                return Json(new { success = false, message = "You can only make future booking from now on." });
+            }
+
+            // checking conflict
+            var overlappingBooking = _context.Bookings
+                .FirstOrDefault(b =>
+                    (startTime < b.EndTime && endTime > b.StartTime) || // overlap
+                    (startTime == b.StartTime && endTime == b.EndTime) // exactly matched
+                );
+
+            // overlappingbooking
+            if (overlappingBooking != null)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "This booking time was already exist, please try another time",
+                    conflictingBookingId = overlappingBooking.BookingId,
+                    conflictingBookingStartTime = overlappingBooking.StartTime,
+                    conflictingBookingEndTime = overlappingBooking.EndTime
+                });
+            }
+
             Booking newBooking = new Booking
             {
                 StartTime = startTime,
                 EndTime = endTime
-                
             };
 
-            _context.Bookings.Add(newBooking);
-            _context.SaveChanges();
+            try
+            {
+                _context.Bookings.Add(newBooking);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                // mark this error
+                return Json(new { success = false, message = "Failed to create booking, try again" });
+            }
 
             return Json(new { success = true });
         }
+
 
     }
 }
