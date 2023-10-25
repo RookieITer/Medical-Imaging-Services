@@ -7,12 +7,14 @@
 
 <h2>Create</h2>
 
-<!-- Add FullCalendar  -->
+<div id="bookingMessage" class="alert" style="display:none;"></div> <!-- For display error message -->
+<!-- Add FullCalendar -->
 <div id="calendar"></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+
     <div class="form-group">
         <label for="StartTime">StartTime:</label>
         @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @id = "StartTime", @class = "form-control", @autocomplete = "off" } })
@@ -21,7 +23,6 @@
         <label for="EndTime">EndTime:</label>
         @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @id = "EndTime", @class = "form-control", @autocomplete = "off" } })
     </div>
-
 
     <!-- Add other form elements as needed -->
 
@@ -35,44 +36,47 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
     <script>
         $(document).ready(function() {
-    $('#calendar').fullCalendar({
-        defaultView: 'agendaWeek',
-        selectable: true,
-        slotDuration: '00:15:00',
-        select: function(start, end) {
-            $("#StartTime").val(start.format());
-            $("#EndTime").val(end.format());
-
-            // Ajax
-            $.ajax({
-                url: '@Url.Action("CreateBooking", "Bookings")', 
-                type: 'POST',
-                data: {
-                    startTime: start.format(),
-                    endTime: end.format()
+            $('#calendar').fullCalendar({
+                defaultView: 'agendaWeek',
+                selectable: true,
+                slotDuration: '00:15:00',
+                select: function(start, end) {
+                    $("#StartTime").val(start.format());
+                    $("#EndTime").val(end.format());
                 },
-                success: function(response) {
-                    if(response.success) {
-                        alert('Booking saved!');
-                        
-                    } else {
-                        alert('Error saving booking.');
-                    }
-                }
+                events: '@Url.Action("GetBookings")'
             });
-        },
-        events: '@Url.Action("GetBookings")'
-    });
-});
 
+            $("button[type=submit]").click(function(e) {
+                e.preventDefault();
 
+                var startTime = $("#StartTime").val();
+                var endTime = $("#EndTime").val();
 
+                $.ajax({
+                    url: '@Url.Action("CreateBooking", "Bookings")',
+                    type: 'POST',
+                    data: {
+                        startTime: startTime,
+                        endTime: endTime
+                    },
+                    success: function(response) {
+                        if(response.success) {
+                            $("#bookingMessage").removeClass('alert-danger').addClass('alert-success').text('Booking Created!').show();
+                            $('#calendar').fullCalendar('refetchEvents');
+                        } else {
+                            $("#bookingMessage").removeClass('alert-success').addClass('alert-danger').text(response.message).show();
+                        }
+                    },
+                    error: function() {
+                        $("#bookingMessage").removeClass('alert-success').addClass('alert-danger').text('Server error, try again later').show();
+                    }
+                });
+            });
+        });
     </script>
 }
-
-
