@@ -180,7 +180,7 @@ namespace PortFolio_A1_Version2._0.Controllers
         [HttpPost]
         public ActionResult CreateBooking(DateTime startTime, DateTime endTime)
         {
-            // 输入验证
+            // Input verification
             if (startTime >= endTime)
             {
                 return Json(new { success = false, message = "Start time must be earlier than end time." });
