@@ -1,2 +1,2 @@
-# FIT5032
+# Medical Imaging Services
  Internet application development repository
